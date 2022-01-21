@@ -12,7 +12,7 @@ function ListItem({ item, index }: ListItemProps) {
   return (
     <Row>
       <Thumbnail>
-        <img
+        <Image
           src={item.property.previewImage.url}
           alt={item.property.previewImage.caption}
         />
@@ -41,7 +41,7 @@ function ListItem({ item, index }: ListItemProps) {
           </Duration>
           <Price>
             <Currency>$</Currency>
-            {item.offer.displayPrice?.amount}
+            <span data-testid="price">{item.offer.displayPrice?.amount}</span>
           </Price>
           {item.offer.savings && (
             <Savings>Save ${item.offer.savings?.amount}~</Savings>
@@ -58,6 +58,12 @@ const Row = styled.div`
 
 const Thumbnail = styled.div`
   position: relative;
+`;
+
+const Image = styled.img`
+  background: #e1e1e1;
+  width: 145px;
+  height: 125px;
 `;
 
 const Promotion = styled.div`

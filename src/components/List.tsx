@@ -20,19 +20,25 @@ function List({ items }: ListItemProps) {
   return (
     <>
       <Row>
-        <div>
-          <strong>{items?.length}</strong> <em>hotels in</em>{" "}
-          <strong>Sydney</strong>
-        </div>
-        <div>
-          <strong>
-            Sort by:{" "}
-            <select onChange={(e) => setSortBy(e.target.value)}>
-              <option value="low">Price low-high</option>
-              <option value="high">Price high-low</option>
-            </select>
-          </strong>
-        </div>
+        {items?.length > 0 ? (
+          <>
+            <div>
+              <strong>{items?.length}</strong> <em>hotels in</em>{" "}
+              <strong>Sydney</strong>
+            </div>
+            <div>
+              <strong>
+                Sort by:{" "}
+                <select onChange={(e) => setSortBy(e.target.value)}>
+                  <option value="low">Price low-high</option>
+                  <option value="high">Price high-low</option>
+                </select>
+              </strong>
+            </div>
+          </>
+        ) : (
+          <p>No results found</p>
+        )}
       </Row>
       {sortedItems &&
         sortedItems.map((i: any, j: any) => (

@@ -1,5 +1,5 @@
 export enum ImageType {
-  PRIMARY,
+  PRIMARY = "PRIMARY",
 }
 
 export enum RatingType {

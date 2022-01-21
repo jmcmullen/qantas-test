@@ -29,8 +29,10 @@ function Rating({ value, type }: RatingProps) {
           width={16}
           height={16}
           fill={value >= i ? "#fece3c" : "#ffefbe"}
+          data-testid={`rating-step-${i}`}
         >
           <use
+            data-testid="rating-shape"
             href={type === RatingType.SELF ? "#circle" : "#star"}
             mask={value - i === 0.5 ? "url(#half)" : ""}
           />

@@ -11,7 +11,9 @@ function App() {
   return (
     <Container>
       <Logo src={QantasLogo} alt="Qantas" />
-      <List items={data.results} />
+      {loading && <p>Loading...</p>}
+      {error && <p>An error has occured, please try again later.</p>}
+      {data && data.results && <List items={data.results} />}
     </Container>
   );
 }
