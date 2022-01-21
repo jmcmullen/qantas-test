@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
-import Rating from "./Rating";
 
+import Rating from "./Rating";
 import { Result, CancellationType } from "../types.d";
+import { TABLET } from "../style";
 
 interface ListItemProps {
   item: Result;
@@ -54,6 +55,11 @@ function ListItem({ item, index }: ListItemProps) {
 
 const Row = styled.div`
   display: flex;
+  flex-direction: column;
+
+  ${TABLET} {
+    flex-direction: row;
+  }
 `;
 
 const Thumbnail = styled.div`
@@ -62,8 +68,13 @@ const Thumbnail = styled.div`
 
 const Image = styled.img`
   background: #e1e1e1;
-  width: 145px;
-  height: 125px;
+  width: 100%;
+
+  ${TABLET} {
+    flex-direction: row;
+    width: 145px;
+    height: 125px;
+  }
 `;
 
 const Promotion = styled.div`
@@ -80,20 +91,30 @@ const Promotion = styled.div`
 const Details = styled.div(
   (props: any) => `
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  margin: 0 0 0.3rem 1.5rem;
   padding: 0.3rem 0;
-  border-top: ${props.index === 0 ? "1px solid #e1e1e1" : "none"};
   border-bottom: 1px solid #e1e1e1;
   min-height: 118px;
+
+  ${TABLET} {
+    flex-direction: row;
+    margin: 0 0 0.3rem 1.5rem;
+    border-top: ${props.index === 0 ? "1px solid #e1e1e1" : "none"};
+  }
 `
 );
 
 const Heading = styled.h2`
   margin: 0;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+
+  ${TABLET} {
+    flex-direction: row;
+    align-items: center;
+  }
 `;
 
 const Title = styled.span`
@@ -122,14 +143,21 @@ const Cancellation = styled.p`
   font-size: 0.8rem;
   font-weight: 500;
   color: #476d5e;
-  margin: 1.8rem 0 0 0;
+  margin: 0;
+
+  ${TABLET} {
+    margin: 1.8rem 0 0 0;
+  }
 `;
 
 const Duration = styled.p`
   font-size: 0.7rem;
   font-weight: 500;
   color: #5f5f5f;
-  margin: 1.8rem 0 0 0;
+
+  ${TABLET} {
+    margin: 1.8rem 0 0 0;
+  }
 `;
 
 const Price = styled.p`

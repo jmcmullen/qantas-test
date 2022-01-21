@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 
 import QantasLogo from "./assets/images/qantas-logo.png";
 import List from "./components/List";
+import { TABLET } from "./style";
 
 function App() {
   const { loading, error, data = [] } = useFetch("/data.json", {}, []);
@@ -19,9 +20,15 @@ function App() {
 }
 
 const Container = styled.div`
-  margin: 2rem auto;
+  margin: 1rem auto;
   max-width: 48rem;
   width: 100%;
+  box-sizing: border-box;
+  padding: 0.5rem;
+
+  ${TABLET} {
+    margin: 2rem auto;
+  }
 `;
 
 const Logo = styled.img`

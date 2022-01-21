@@ -8,7 +8,7 @@ interface RatingProps {
 
 function Rating({ value, type }: RatingProps) {
   return (
-    <>
+    <div>
       <svg width="0" height="0" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <mask id="half">
@@ -38,7 +38,7 @@ function Rating({ value, type }: RatingProps) {
           />
         </svg>
       ))}
-    </>
+    </div>
   );
 }
 
