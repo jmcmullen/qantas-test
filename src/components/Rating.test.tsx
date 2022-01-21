@@ -31,7 +31,7 @@ test("renders each possible value correctly", () => {
     // Check mask is enabled for half stars.
     expect(shapeEl).toHaveAttribute("mask", isHalf ? "url(#half)" : "");
 
-    // Check all stars up to current value are disabled.
+    // Check all stars after current value are disabled.
     for (let j = 4; j > elIndex; j--) {
       const endEl = screen.getByTestId(`rating-step-${j}`);
       expect(endEl).toHaveAttribute("fill", "#ffefbe");

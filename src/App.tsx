@@ -25,6 +25,7 @@ const Container = styled.div`
   width: 100%;
   box-sizing: border-box;
   padding: 0.5rem;
+  font-family: sans-serif;
 
   ${TABLET} {
     margin: 2rem auto;
