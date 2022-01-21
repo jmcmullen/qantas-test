@@ -2,9 +2,9 @@ export enum ImageType {
   PRIMARY,
 }
 
-enum RatingType {
-  SELF,
-  STAR,
+export enum RatingType {
+  SELF = "self",
+  STAR = "star",
 }
 
 export interface Property {

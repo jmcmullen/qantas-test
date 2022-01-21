@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import StarRating from "./StarRating";
+import Rating from "./Rating";
 
 import { Result, CancellationType } from "../types.d";
 
@@ -22,7 +22,10 @@ function ListItem({ item, index }: ListItemProps) {
         <div>
           <Heading>
             <Title>{item.property.title}</Title>
-            <StarRating value={item.property.rating.ratingValue} />
+            <Rating
+              value={item.property.rating.ratingValue}
+              type={item.property.rating.ratingType}
+            />
           </Heading>
           <Address>{item.property.address.join(", ")}</Address>
           <Offer>{item.offer.name}</Offer>
@@ -83,6 +86,8 @@ const Details = styled.div(
 
 const Heading = styled.h2`
   margin: 0;
+  display: flex;
+  align-items: center;
 `;
 
 const Title = styled.span`
@@ -92,6 +97,7 @@ const Title = styled.span`
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 20rem;
+  margin-right: 0.2rem;
 `;
 
 const Address = styled.p`
