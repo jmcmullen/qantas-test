@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 
 import ListItem from "./ListItem";
+import { Result } from "../types.d";
 
-function List({ items }: any) {
+interface ListItemProps {
+  items: Result[];
+}
+
+function List({ items }: ListItemProps) {
+  const [sortBy, setSortBy] = useState("low");
+
+  const sortedItems = items?.sort((a: any, b: any) =>
+    sortBy === "high"
+      ? b.offer.displayPrice.amount - a.offer.displayPrice.amount
+      : a.offer.displayPrice.amount - b.offer.displayPrice.amount
+  );
+
   return (
     <>
       <Row>
@@ -14,15 +27,15 @@ function List({ items }: any) {
         <div>
           <strong>
             Sort by:{" "}
-            <select>
-              <option>Price high-low</option>
-              <option>Price low-high</option>
+            <select onChange={(e) => setSortBy(e.target.value)}>
+              <option value="low">Price low-high</option>
+              <option value="high">Price high-low</option>
             </select>
           </strong>
         </div>
       </Row>
-      {items &&
-        items.map((i: any, j: any) => (
+      {sortedItems &&
+        sortedItems.map((i: any, j: any) => (
           <ListItem item={i} index={j} key={i.id} />
         ))}
     </>

@@ -1,6 +1,14 @@
 import styled from "@emotion/styled";
+import StarRating from "./StarRating";
 
-function ListItem({ item, index }: any) {
+import { Result, CancellationType } from "../types.d";
+
+interface ListItemProps {
+  item: Result;
+  index: number;
+}
+
+function ListItem({ item, index }: ListItemProps) {
   return (
     <Row>
       <Thumbnail>
@@ -12,11 +20,14 @@ function ListItem({ item, index }: any) {
       </Thumbnail>
       <Details index={index}>
         <div>
-          <Title>{item.property.title}</Title>
+          <Heading>
+            <Title>{item.property.title}</Title>
+            <StarRating value={item.property.rating.ratingValue} />
+          </Heading>
           <Address>{item.property.address.join(", ")}</Address>
           <Offer>{item.offer.name}</Offer>
           {item.offer.cancellationOption.cancellationType ===
-            "FREE_CANCELLATION" && (
+            CancellationType.FREE_CANCELLATION && (
             <Cancellation>Free Cancellation</Cancellation>
           )}
         </div>
@@ -62,7 +73,7 @@ const Details = styled.div(
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin: 0 1.5rem 0.3rem;
+  margin: 0 0 0.3rem 1.5rem;
   padding: 0.3rem 0;
   border-top: ${props.index === 0 ? "1px solid #e1e1e1" : "none"};
   border-bottom: 1px solid #e1e1e1;
@@ -70,8 +81,11 @@ const Details = styled.div(
 `
 );
 
-const Title = styled.h2`
+const Heading = styled.h2`
   margin: 0;
+`;
+
+const Title = styled.span`
   font-size: 1.2rem;
   font-weight: 500;
   white-space: nowrap;
